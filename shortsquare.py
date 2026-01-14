@@ -1,5 +1,4 @@
 import numpy as np
-from matplotlib.ticker import MultipleLocator
 import matplotlib.pyplot as plt
 import math
 from scipy.special import gamma
