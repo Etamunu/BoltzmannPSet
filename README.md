@@ -11,4 +11,4 @@ This repository contains a set of Python codes for testing a new algorithm for B
 	
 ## References
 
-The references used for this project are given in the corresponding paper: [to be added once the paper is on arXiv]
+The references used for this project are given in the corresponding paper available at https://arxiv.org/abs/2601.09508
