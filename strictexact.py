@@ -4,16 +4,17 @@ import matplotlib.pyplot as plt
 
 def Boltzmann(z):
 	s=set()
-	l=1./(1.-z)
+	l=z/(1.-z)
 	m=np.random.poisson(l)
 	for i in range(m):
 		n=np.random.geometric(1.-z)
-		if np.random.rand()<(np.log(1.+pow(z,n)))/pow(z,n):
+		t=pow(z,n)
+		if np.random.rand()<(np.log1p(t)/t if t else 1.):
 			s.add(n)
 	return sorted(s,reverse=True)
 	
 def BoltzmannExact(n):
-	z=np.exp(-1./pow(n*pow(12.,0.5)/np.pi,0.5))
+	z=np.exp(-np.pi/np.sqrt(12.*n))
 	part = Boltzmann(z)
 	while sum(part)!=n:
 		part = Boltzmann(z)
