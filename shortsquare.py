@@ -12,19 +12,21 @@ def perfect_square(n):
 
 def Boltzmann(z1,z2):
 	s=set()
-	l=z2/(1.-z1)
+	l=z2*z1/(1.-z1)
 	m=np.random.poisson(l)
 	for i in range(m):
 		n=np.random.geometric(1.-z1)
-		if perfect_square(n)  and np.random.rand()<(np.log(1.+z2*pow(z1,n)))/(z2*pow(z1,n)):
-			s.add(n)
+		if perfect_square(n):
+			t=z2*pow(z1,n)
+			if np.random.rand()<(np.log1p(t)/t if t else 1.):
+				s.add(n)
 	return sorted(s,reverse=True)
 	
-def BoltzmannExact(n):
-	z=np.exp(-1./pow(n*pow(12.,0.5)/np.pi,0.5))
-	part = Boltzmann(z)
+def BoltzmannExact(n,m):
+	z1,z2=calibration(m,n)
+	part = Boltzmann(z1,z2)
 	while sum(part)!=n:
-		part = Boltzmann(z)
+		part = Boltzmann(z1,z2)
 		print(sum(part))
 	return part
 	
