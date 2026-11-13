@@ -47,9 +47,9 @@ A, B = scaling(m,n)
 part=Boltzmann(z1,z2)
 N=sum(part)
 partscale=np.array(part)/A
-y=np.linspace(0,len(part)/B,len(part))
+y = np.arange(1, len(part) + 1) / B
 xlim=np.arange(0,3.,0.1)
 ylim=limitshape(xlim)
 plt.plot(xlim,ylim, '--')
-plt.step(partscale,y)
+plt.step(partscale, y, where="post")
 plt.show()
