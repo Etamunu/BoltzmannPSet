@@ -25,7 +25,6 @@ def limitshape(x):
 	return c*np.log(1.+np.exp(-x/c))
 
 n=10000
-z=np.exp(-1./pow(n*pow(12.,0.5)/np.pi,0.5))
 part=BoltzmannExact(n)
 N=sum(part)
 partscale=part/np.sqrt(N)
